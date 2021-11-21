@@ -7,7 +7,7 @@ class Path
         String pathRET="";
         try
         {
-            FileReader file=new FileReader("C:\\Users\\Nakul\\Documents\\Tijori\\path.txt");
+            FileReader file=new FileReader("C:\\Users\\"+System.getProperty("user.name")+"\\Documents\\Tijori\\path.txt");
             BufferedReader fileinput=new BufferedReader(file);
             pathRET=fileinput.readLine();
             fileinput.close();
