@@ -29,10 +29,11 @@ class QRCodeGenerator
     {
         try
         {
-            FileReader file=new FileReader("C:\\Users\\Nakul\\Documents\\Tijori\\path.txt");
-            BufferedReader fileinput=new BufferedReader(file);
-            String pathRET=fileinput.readLine();
-            fileinput.close();
+            //FileReader file=new FileReader("C:\\Users\\"+System.getProperty("user.name")+"\\Documents\\Tijori\\path.txt");
+            //BufferedReader fileinput=new BufferedReader(file);
+            //String pathRET=fileinput.readLine();
+            String pathRET="C:\\Users\\"+System.getProperty("user.name")+"\\Documents\\Tijori";
+            //fileinput.close();
             
             generateQRCodeImage(pass, 100, 100, pathRET+"\\"+name+"-qr.png");
             

@@ -4,7 +4,8 @@ class Path
 {
     public static String path()
     {
-        String pathRET="";
+        String pathRET="C:\\Users\\"+System.getProperty("user.name")+"\\Documents\\Tijori";
+        /*
         try
         {
             FileReader file=new FileReader("C:\\Users\\"+System.getProperty("user.name")+"\\Documents\\Tijori\\path.txt");
@@ -16,6 +17,7 @@ class Path
         {
             JOptionPane.showMessageDialog(null,"Error : Path","ERROR",JOptionPane.ERROR_MESSAGE);
         }
+        */
         return pathRET;
     }
 }

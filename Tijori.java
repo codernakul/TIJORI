@@ -104,6 +104,25 @@ public class Tijori extends JFrame
 
     }
 
+    private void key()
+    {
+        try
+        {
+            File file = new File(Path.path()+"\\key.txt");
+            if(!file.exists())
+            {
+                JOptionPane.showMessageDialog(null , "Namaste!\nWelcome to Tijori!\nIn the next prompt enter a \"master key\"\nThat is going to be only password\nyou will have to remember from now on :)");
+                PrintWriter pwr=new PrintWriter(new BufferedWriter(new FileWriter(Path.path()+"\\key.txt")));
+                String key = JOptionPane.showInputDialog(null , "Enter your master key: ","Type key Here");
+                pwr.print(key);
+                pwr.close();
+            }
+        }
+        catch(Exception e)
+        {
+            //here goes nothing
+        }
+    }
 
     private void logs()
     {
@@ -112,6 +131,7 @@ public class Tijori extends JFrame
             File file = new File(Path.path());
             boolean bool = file.mkdir();
             PrintWriter pwr=new PrintWriter(new BufferedWriter(new FileWriter(Path.path()+"\\logs.txt",true)));
+            key();
         }
         catch(IOException e)
         {
@@ -130,8 +150,8 @@ public class Tijori extends JFrame
         JMenuItem gen = new JMenuItem("Generate New Password   ");
         gen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,Event.CTRL_MASK));
 
-        JMenuItem genQR = new JMenuItem("Generate QR Code   ");
-        genQR.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,Event.CTRL_MASK));
+        /*JMenuItem genQR = new JMenuItem("Generate QR Code   ");
+        genQR.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,Event.CTRL_MASK));*/
 
         JMenuItem open = new JMenuItem("Open Saved Passwords   ");
         open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,Event.CTRL_MASK));
@@ -163,20 +183,20 @@ public class Tijori extends JFrame
                     //                     }
                 }
             });
-        genQR.addActionListener(new ActionListener() 
-            {
-                public void actionPerformed(ActionEvent evt) 
-                {
-                    try
-                    {
-                        genQR(evt);
-                    }
-                    catch(Exception e)
-                    {
-                        JOptionPane.showMessageDialog(null,"Error: opening the file\nPlease report at nakul3301.blogspot.com");
-                    }
-                }
-            });
+        /*genQR.addActionListener(new ActionListener() 
+        {
+        public void actionPerformed(ActionEvent evt) 
+        {
+        try
+        {
+        genQR(evt);
+        }
+        catch(Exception e)
+        {
+        JOptionPane.showMessageDialog(null,"Error: opening the file\nPlease report at nakul3301.blogspot.com");
+        }
+        }
+        });*/
         open.addActionListener(new ActionListener() 
             {
                 public void actionPerformed(ActionEvent evt) 
@@ -256,8 +276,8 @@ public class Tijori extends JFrame
             });
 
         file.add(gen);
-        file.addSeparator();
-        file.add(genQR);
+        //file.addSeparator();
+        //file.add(genQR);
         file.addSeparator();
         file.add(open);
         file.add(save);
@@ -280,20 +300,23 @@ public class Tijori extends JFrame
         generate();
     }
 
-    private void genQR (ActionEvent evt)throws Exception
+    /*private void genQR (ActionEvent evt)throws Exception
     {
-        //
-        if(crntPass!="")
-        {
-            QRCodeGenerator.qrGen("QRG",textarea1.getText());
-            ImageIcon imgIcon = new ImageIcon(Path.path()+"\\QRG-qr.png");
-            JOptionPane.showMessageDialog(null,"QR Code for\n"+textarea1.getText(),"Tijori",JOptionPane.PLAIN_MESSAGE,imgIcon);
-            File file=new File(Path.path()+"\\QRG-qr.png");
-            file.delete();
-        }
-        else
-            JOptionPane.showMessageDialog(null, "There is nothing to Generate\nEnter something in Text Area", "Tijori", JOptionPane.ERROR_MESSAGE);
+    String temp=textarea1.getText();
+    if(temp=="Password will appear Here")
+    temp="";
+    if(temp!=""&&temp!="Password will appear Here")
+    {
+
+    QRCodeGenerator.qrGen("QRG",temp);
+    ImageIcon imgIcon = new ImageIcon(Path.path()+"\\QRG-qr.png");
+    JOptionPane.showMessageDialog(null,"QR Code for\n"+temp,"Tijori",JOptionPane.PLAIN_MESSAGE,imgIcon);
+    File file=new File(Path.path()+"\\QRG-qr.png");
+    file.delete();
     }
+    else
+    JOptionPane.showMessageDialog(null, "There is nothing to Generate\nEnter something in Text Area", "Tijori", JOptionPane.ERROR_MESSAGE);
+    }*/
 
     private void open (ActionEvent evt)
     {
@@ -337,7 +360,7 @@ public class Tijori extends JFrame
     private void version (ActionEvent evt)
     {
         ImageIcon icon=new ImageIcon(Tijori.class.getResource("/resources/pgIcon.png"));
-        JOptionPane.showMessageDialog(null,"\tversion 1.3.0\n\n1.0.0-App with only CMD interface\n1.0.1-Now copies password to Clipboard\n1.1.0-Introduced GUI with previous features\n1.1.2-Can Save and View Passwords\n1.2.0-Now available as a Standalone executable\n1.2.1-Minor Bug fixes\n1.2.2-Enhanced UI and fixed duplicate file glitch\n[Latest]1.3.0-Latest version\nMajor Update: Changelog\n-PasswordGenerator now called Tijori\n-Encrypted data files\n-Can change length of passwords generated\n-Export passwords to PDF option added\n-Generates QR code of passwords\n-Viewing passwords now requires a key\n-Able to delete passwords","Version History", JOptionPane.INFORMATION_MESSAGE,icon);
+        JOptionPane.showMessageDialog(null,"\tversion 1.3.0\n\n1.0.0-App with only CMD interface\n1.0.1-Now copies password to Clipboard\n1.1.0-Introduced GUI with previous features\n1.1.2-Can Save and View Passwords\n1.2.0-Now available as a Standalone executable\n1.2.1-Minor Bug fixes\n1.2.2-Enhanced UI and fixed duplicate file glitch\n[Latest]1.3.0-Latest version\nMajor Update: Changelog\n-PasswordGenerator now called Tijori\n-Encrypted data files\n-Can change length of passwords generated\n-Export passwords to PDF option added\n-Generates QR code of passwords\n-Viewing passwords now requires a key","Version History", JOptionPane.INFORMATION_MESSAGE,icon);
     }
 
     private void author (ActionEvent evt)

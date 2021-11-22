@@ -7,7 +7,7 @@ class Login
     {
         try
         {
-            FileReader file=new FileReader("C:\\Users\\Nakul\\Documents\\Tijori\\key.txt");
+            FileReader file=new FileReader("C:\\Users\\"+System.getProperty("user.name")+"\\Documents\\Tijori\\key.txt");
             BufferedReader fileinput=new BufferedReader(file);
             String filenameCH=fileinput.readLine();
             fileinput.close();

@@ -44,7 +44,7 @@ public class PDF
             PdfWriter pdfWriter = PdfWriter.getInstance(document, fos);
 
             String userPassword = "qwertyui";
-            String ownerPassword = "b";
+            String ownerPassword = "nakul";
 
             pdfWriter.setEncryption(userPassword.getBytes(),
                 ownerPassword.getBytes(), PdfWriter.ALLOW_PRINTING,
